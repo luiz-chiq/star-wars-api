@@ -27,4 +27,9 @@ routes.post('/planet', async (req, res) => {
     }
 });
 
+routes.get('/planets', (req, res) => {
+
+    res.status(200).json(planets);
+});
+
 module.exports = routes;    
