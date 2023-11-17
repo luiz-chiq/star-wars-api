@@ -48,4 +48,23 @@ routes.get('/planet/:name', (req, res) => {
     res.status(200).json(planet);
 });
 
+routes.delete('/planet/:name', (req, res) => {
+        const planetName = req.params.name;
+    
+        if (!planetName) {
+            return res.status(400).json({ error: 'Nome do planeta não fornecido' });
+        }
+    
+        const planetIndex = planets.findIndex(planet => planet.name === planetName);
+    
+        if (planetIndex === -1) {
+            return res.status(404).json({ error: 'Planeta não encontrado' });
+        }
+    
+        // Remova o planeta do array
+        planets.splice(planetIndex, 1);
+    
+        res.status(200).json({ message: 'Planeta removido com sucesso' });
+});
+
 module.exports = routes;    
