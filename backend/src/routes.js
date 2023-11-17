@@ -32,4 +32,20 @@ routes.get('/planets', (req, res) => {
     res.status(200).json(planets);
 });
 
+routes.get('/planet/:name', (req, res) => {
+    const planetName = req.params.name;
+  
+    if (!planetName) {
+      return res.status(400).json({ error: 'Nome do planeta não fornecido' });
+    }
+  
+    const planet = planets.find(planet => planet.name === planetName);
+  
+    if (!planet) {
+      return res.status(404).json({ error: 'Planeta não encontrado' });
+    }
+  
+    res.status(200).json(planet);
+});
+
 module.exports = routes;    
