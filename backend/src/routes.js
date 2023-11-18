@@ -10,8 +10,11 @@ routes.post('/planet', async (req, res) => {
     try {
 
         const data = req.body
-
         const existingPlanet = planets.find(planet => planet.name === data.planet);
+        
+        if (data.planet == '') {
+            return res.status(400).json({ message: 'Planeta inválido'} )
+        }
 
         if (existingPlanet) {
             return res.status(400).json({ message: 'Planeta já existe na lista' });
