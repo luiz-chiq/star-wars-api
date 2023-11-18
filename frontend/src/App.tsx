@@ -1,9 +1,9 @@
 import axios from 'axios';
 import './App.css';
-import AddPlanetComponent from './components/AddPlanet';
-import Card from './components/Card'
+import AddPlanetComponent from './components/AddPlanet/AddPlanet';
+import Card from './components/Card/Card'
 import { useEffect, useState } from 'react';
-import SearchPlanetComponent from './components/SearchPlanet';
+import SearchPlanetComponent from './components/SearchPlanet/SearchPlanet';
 
 function App() {
 
