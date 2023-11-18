@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
 interface AddPlanetComponentProps {
     onSavePlanet: (planetName: string) => void;

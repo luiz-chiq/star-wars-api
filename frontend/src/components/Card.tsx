@@ -1,6 +1,4 @@
-import axios from 'axios';
-import { promises } from 'dns';
-import { FC, MouseEvent } from 'react';
+import { FC } from 'react';
 
 interface CardProps {
   title: string;
