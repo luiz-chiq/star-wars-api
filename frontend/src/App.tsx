@@ -64,6 +64,7 @@ function App() {
   
   return (
   <>
+    <AddPlanetComponent onSavePlanet={handleSavePlanet} />
     {planets.map((planet, index) => (
         <Card key={index} title={planet.name} onDeletePlanet={handleDeletePlanet} />
       ))}
