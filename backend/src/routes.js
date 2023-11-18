@@ -9,10 +9,10 @@ const planets = []
 routes.post('/planet', async (req, res) => {
     try {
 
-        const data = req.body
-        const existingPlanet = planets.find(planet => planet.name === data.planet);
+        const planetName = req.body.planet
+        const existingPlanet = planets.find(planet => planet.name === planetName);
         
-        if (data.planet == '') {
+        if (planetName == '') {
             return res.status(400).json({ message: 'Planeta inválido'} )
         }
 
@@ -20,11 +20,9 @@ routes.post('/planet', async (req, res) => {
             return res.status(400).json({ message: 'Planeta já existe na lista' });
         }
 
-        let url = `https://swapi.dev/api/planets/?search=${data.planet}`
-        console.log(data.planet)
+        let url = `https://swapi.dev/api/planets/?search=${planetName}`
         const response = await axios.get(url);
-
-        if (response.data.results[0]) {
+        if (response.data.results[0].name.toLowerCase() === planetName.toLowerCase()) {
             planets.push(response.data.results[0]);
             return res.status(200).json({ message: 'Planeta adicionado com sucesso' });
         } else {
