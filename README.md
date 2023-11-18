@@ -1,7 +1,3 @@
-# Projeto XYZ
-
-Bem-vindo ao Projeto XYZ! Este projeto consiste em uma aplicação com uma parte backend e uma parte frontend.
-
 ## Configuração
 
 Certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
@@ -22,11 +18,11 @@ npm install
 
 3. Inicie o servidor de desenvolvimento:
 
-O servidor estará em execução em http://localhost:3004.
 
 ```bash
 npm run dev
 ```
+O servidor estará em execução em http://localhost:3004.
 
 ### Frontend
 
