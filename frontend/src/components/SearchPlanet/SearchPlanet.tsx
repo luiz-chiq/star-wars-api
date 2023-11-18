@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Card from '../Card/Card';
+import styles from './SearchPlanet.module.css'
 
 interface SearchPlanetComponentProps {
   planets: Planet[];
@@ -20,20 +21,28 @@ const SearchPlanetComponent: React.FC<SearchPlanetComponentProps> = ({ planets, 
     setFoundPlanet(found || null);
   };
 
+  const handleDelete = () => {
+    onDeletePlanet(foundPlanet!.name)
+    setFoundPlanet(null)
+  }
+
   return (
-    <div>
-      <label>
-        Pesquisar Planeta:
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </label>
-      <button onClick={handleSearch}>Pesquisar</button>
+    <div className={styles.container}>
+      <div className={styles.inputField}>
+        <label className={styles.label}>
+          Pesquisar Planeta:
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.input}
+            />
+        </label>
+        <button className={styles.button} onClick={handleSearch}>Pesquisar</button>
+      </div>
 
       {foundPlanet && (
-        <Card title={foundPlanet.name} onDeletePlanet={onDeletePlanet}/>
+        <Card title={foundPlanet.name} onDeletePlanet={handleDelete}/>
       )}
     </div>
   );

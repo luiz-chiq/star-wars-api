@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './AddPlanet.module.css'
 
 interface AddPlanetComponentProps {
     onSavePlanet: (planetName: string) => void;
@@ -23,16 +24,17 @@ const AddPlanetComponent: React.FC<AddPlanetComponentProps> = ({ onSavePlanet })
   };
 
   return (
-    <div>
-      <label>
+    <div className={styles.container}>
+      <label className={styles.label}>
         Nome do Planeta:
         <input
           type="text"
           value={planetName}
           onChange={(e) => setPlanetName(e.target.value)}
+          className={styles.input}
         />
       </label>
-      <button onClick={handleSavePlanet} disabled={isLoading}>
+      <button className={styles.button} onClick={handleSavePlanet} disabled={isLoading}>
         {isLoading ? 'Carregando...' : buttonText}
       </button>
     </div>

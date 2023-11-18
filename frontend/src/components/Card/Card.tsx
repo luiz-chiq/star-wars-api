@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import styles from './Card.module.css'
 
 interface CardProps {
   title: string;
@@ -9,9 +10,9 @@ const Card: FC<CardProps> = ({ title, onDeletePlanet }) => {
 
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px', margin: '16px', width: '300px' }}>
-      <h2>{title}</h2>
-      <button onClick={() => onDeletePlanet(title)}>Deletar</button>
+    <div className={styles.card}>
+      <h2 className={styles.title}>{title}</h2>
+      <button className={styles.button} onClick={() => onDeletePlanet(title)}>Deletar</button>
     </div>
   );
 };
