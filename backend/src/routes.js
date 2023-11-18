@@ -8,10 +8,17 @@ const planets = []
 
 routes.post('/planet', async (req, res) => {
     try {
+
         const data = req.body
 
+        const existingPlanet = planets.find(planet => planet.name === data.planet);
+
+        if (existingPlanet) {
+            return res.status(400).json({ message: 'Planeta já existe na lista' });
+        }
+
         let url = `https://swapi.dev/api/planets/?search=${data.planet}`
-        
+        console.log(data.planet)
         const response = await axios.get(url);
 
         if (response.data.results[0]) {
