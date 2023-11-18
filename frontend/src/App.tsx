@@ -21,7 +21,7 @@ function App() {
     try {
       const response = await axios.get('http://localhost:3004/planets');
       setPlanets(response.data);
-      console.log("a")
+
     } catch (error) {
       console.error('Erro ao buscar planetas:', error);
     }
@@ -32,7 +32,6 @@ function App() {
       const response = await axios.post('http://localhost:3004/planet', { planet: planetName });
       
       if (response.data.message === 'Planeta adicionado com sucesso') {
-        alert("Planeta adicionado com sucesso!")
       } else {
         console.error('Erro ao adicionar planeta:', response.data.error);
         alert('Erro ao adicionar planeta!');
@@ -50,7 +49,6 @@ function App() {
       const response = await axios.delete(`http://localhost:3004/planet/${title}`);
       if (response.data.message === 'Planeta removido com sucesso') {
         console.log('Planeta removido com sucesso:', response.data);
-        alert('Planeta removido!');
       } else {
         console.error('Erro ao remover planeta:', response.data.error);
         alert('Erro ao remover planeta!');
@@ -65,6 +63,7 @@ function App() {
   return (
   <>
     <AddPlanetComponent onSavePlanet={handleSavePlanet} />
+    <SearchPlanetComponent planets={planets} onDeletePlanet={handleDeletePlanet}/>
     {planets.map((planet, index) => (
         <Card key={index} title={planet.name} onDeletePlanet={handleDeletePlanet} />
       ))}
