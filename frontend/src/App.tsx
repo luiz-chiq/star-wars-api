@@ -1,5 +1,5 @@
 import axios from 'axios';
-import './App.css';
+import styles from './App.module.css';
 import AddPlanetComponent from './components/AddPlanet/AddPlanet';
 import Card from './components/Card/Card'
 import { useEffect, useState } from 'react';
@@ -61,12 +61,19 @@ function App() {
   };
   
   return (
-  <>
-    <AddPlanetComponent onSavePlanet={handleSavePlanet} />
-    <SearchPlanetComponent planets={planets} onDeletePlanet={handleDeletePlanet}/>
-    {planets.map((planet, index) => (
-        <Card key={index} title={planet.name} onDeletePlanet={handleDeletePlanet} />
-      ))}
+    <>
+      <div className={styles.container}> 
+        <div className={styles.column}>
+          <AddPlanetComponent onSavePlanet={handleSavePlanet} />
+          {planets.map((planet, index) => (
+            <Card key={index} title={planet.name} onDeletePlanet={handleDeletePlanet} />
+            ))}
+        </div>
+        <div className={styles.column}>
+          <SearchPlanetComponent planets={planets} onDeletePlanet={handleDeletePlanet}/>
+        </div>
+      </div>
+            <div className={styles.background}/>
     </>
   );
 }
