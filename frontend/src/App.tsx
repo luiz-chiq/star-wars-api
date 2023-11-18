@@ -27,6 +27,24 @@ function App() {
     }
   };
   
+  const handleSavePlanet = async (planetName: string) => {
+    try {
+      const response = await axios.post('http://localhost:3004/planet', { planet: planetName });
+      
+      if (response.data.message === 'Planeta adicionado com sucesso') {
+        alert("Planeta adicionado com sucesso!")
+      } else {
+        console.error('Erro ao adicionar planeta:', response.data.error);
+        alert('Erro ao adicionar planeta!');
+      }
+    } catch (error) {
+      console.error('Erro na requisição POST:', error);
+      alert('Erro na requisição POST!');
+    }
+    fetchPlanets();
+  };
+  
+
   const handleDeletePlanet = async (title: string) => {
     try {
       const response = await axios.delete(`http://localhost:3004/planet/${title}`);
